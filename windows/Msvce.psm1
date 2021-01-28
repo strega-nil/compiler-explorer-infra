@@ -199,28 +199,28 @@ function Build-MsvceDockerImage
 {
   [CmdletBinding(PositionalBinding=$false)]
   Param(
-    [Parameter(Mandatory=$false, ParameterSetName='Setup')]
+    [Parameter(ParameterSetName='Setup')]
     [string]$WindowsVersion = (Get-MsvceConfig 'windows/version'),
 
-    [Parameter(Mandatory=$false)]
+    [Parameter()]
     [string]$DockerTag = 'test',
 
-    [Parameter(Mandatory=$false)]
+    [Parameter()]
     [string]$BuildDirectory = $BUILD_PATH,
 
-    [Parameter(Mandatory=$false, ParameterSetName='Setup')]
+    [Parameter(ParameterSetName='Setup')]
     [switch]$Clean,
 
-    [Parameter(Mandatory=$true, ParameterSetName='NoSetup')]
+    [Parameter(Mandatory, ParameterSetName='NoSetup')]
     [switch]$JustBuild,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter()]
     [string]$GitCommit = (Get-MsvceConfig 'compiler_explorer/git_commit'),
 
-    [Parameter(Mandatory=$false)]
+    [Parameter()]
     [string]$NodeVersion = (Get-MsvceConfig 'node/version'),
 
-    [Parameter(Mandatory=$false, DontShow)]
+    [Parameter(DontShow)]
     [string]$NodeArchitecture = (Get-MsvceConfig 'node/architecture')
   )
 
